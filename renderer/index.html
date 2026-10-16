@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>karaTin</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="topbar">
+    <div class="row">
+      <h1>karaTin</h1>
+      <div id="counters">
+        <span class="c ok">ok <b id="c-ok">0</b></span>
+        <span class="c inv">invalid <b id="c-invalid">0</b></span>
+        <span class="c blk">blocked <b id="c-blocked">0</b></span>
+        <span class="c otp">otp <b id="c-otp">0</b></span>
+        <span class="c err">error <b id="c-error">0</b></span>
+        <span class="c skp">skip <b id="c-skip">0</b></span>
+      </div>
+      <div class="actions">
+        <button id="btn-start" class="primary">Start</button>
+        <button id="btn-stop" disabled>Stop</button>
+        <button id="btn-settings">Settings</button>
+      </div>
+    </div>
+    <div class="row sub">
+      <span id="hint">Paste combos in Settings, then press Start. Tick Cloudflare checkboxes yourself in each cell.</span>
+      <span id="toast"></span>
+    </div>
+  </header>
+
+  <main id="grid">
+    <!-- worker cell overlays; the actual web views are native, positioned by main -->
+    <div class="cell" data-i="0"><div class="tag"><b>1</b><span class="st">idle</span></div><div class="em"></div><div class="otpbox hidden"><input placeholder="OTP code"><button>Send</button></div></div>
+    <div class="cell" data-i="1"><div class="tag"><b>2</b><span class="st">idle</span></div><div class="em"></div><div class="otpbox hidden"><input placeholder="OTP code"><button>Send</button></div></div>
+    <div class="cell" data-i="2"><div class="tag"><b>3</b><span class="st">idle</span></div><div class="em"></div><div class="otpbox hidden"><input placeholder="OTP code"><button>Send</button></div></div>
+    <div class="cell" data-i="3"><div class="tag"><b>4</b><span class="st">idle</span></div><div class="em"></div><div class="otpbox hidden"><input placeholder="OTP code"><button>Send</button></div></div>
+  </main>
+
+  <div id="settings-modal" class="hidden">
+    <div class="sheet">
+      <h2>Settings</h2>
+      <label>Start URL <input id="s-url" type="text"></label>
+      <label>Workers (1–4) <input id="s-workers" type="number" min="1" max="4"></label>
+      <label>Telegram bot token <input id="s-token" type="password" placeholder="set = save, empty = keep"></label>
+      <label>Telegram chat ID <input id="s-chat" type="text"></label>
+      <label class="chk"><input id="s-paidonly" type="checkbox"> Paid-only Telegram reports</label>
+      <label>Combos <small>(email:password per line)</small>
+        <textarea id="s-combos" rows="10" spellcheck="false"></textarea>
+      </label>
+      <div class="sheet-actions">
+        <button id="s-save" class="primary">Save</button>
+        <button id="s-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script src="ui.js"></script>
+</body>
+</html>
