@@ -17,7 +17,11 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run dist
+      - run: npm run predist
+
+      - run: npx electron-builder --win --x64 --publish=never
+        env:
+          DEBUG: electron-builder
 
       - uses: actions/upload-artifact@v4
         with:
