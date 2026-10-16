@@ -1,0 +1,73 @@
+/* karaTin desktop — dark UI. Top bar is exactly 148px (see TOP_BAR_H in main). */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: #101014; color: #e8e8ec;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+#topbar { height: 148px; flex: 0 0 148px; background: #17171d; border-bottom: 1px solid #26262e; padding: 12px 16px; }
+#topbar .row { display: flex; align-items: center; gap: 16px; }
+#topbar .row.sub { margin-top: 10px; color: #9a9aa5; font-size: 12px; }
+h1 { margin: 0; font-size: 22px; letter-spacing: 0.5px; }
+#counters { display: flex; gap: 12px; font-size: 13px; color: #b9b9c2; }
+#counters .c b { color: #fff; margin-left: 4px; }
+.actions { margin-left: auto; display: flex; gap: 8px; }
+button {
+  background: #26262e; color: #e8e8ec; border: 1px solid #34343e;
+  border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 13px;
+}
+button:hover { background: #2e2e38; }
+button.primary { background: #2f6fed; border-color: #2f6fed; color: #fff; }
+button.primary:hover { background: #3b7bf5; }
+button:disabled { opacity: 0.45; cursor: default; }
+#toast { color: #ffd479; margin-left: auto; }
+
+#grid {
+  flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 2px; background: #000; position: relative;
+}
+.cell { position: relative; background: #0a0a0d; overflow: hidden; }
+.cell .tag {
+  position: absolute; top: 8px; left: 8px; z-index: 5;
+  background: rgba(20,20,26,0.85); border: 1px solid #34343e; border-radius: 8px;
+  padding: 4px 10px; font-size: 12px; display: flex; gap: 8px; align-items: center;
+  pointer-events: none;
+}
+.cell .tag b {
+  background: #2f6fed; color: #fff; border-radius: 50%;
+  width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+}
+.cell .em {
+  position: absolute; top: 8px; right: 8px; z-index: 5; font-size: 11px; color: #9a9aa5;
+  background: rgba(20,20,26,0.85); padding: 4px 8px; border-radius: 6px; pointer-events: none;
+  max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.cell .otpbox {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 6;
+  display: flex; gap: 6px; background: rgba(20,20,26,0.95); padding: 8px; border-radius: 10px;
+  border: 1px solid #2f6fed;
+}
+.cell .otpbox input {
+  background: #101014; border: 1px solid #34343e; color: #fff; border-radius: 6px;
+  padding: 6px 10px; width: 140px;
+}
+.hidden { display: none !important; }
+
+#settings-modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+}
+.sheet {
+  background: #17171d; border: 1px solid #34343e; border-radius: 12px;
+  padding: 20px; width: 520px; max-height: 90vh; overflow: auto;
+}
+.sheet h2 { margin: 0 0 12px; font-size: 18px; }
+.sheet label { display: block; margin: 10px 0; font-size: 13px; color: #b9b9c2; }
+.sheet label small { color: #777; }
+.sheet input[type=text], .sheet input[type=password], .sheet input[type=number], .sheet textarea {
+  width: 100%; margin-top: 4px; background: #101014; border: 1px solid #34343e;
+  color: #fff; border-radius: 6px; padding: 8px 10px; font-size: 13px; font-family: monospace;
+}
+.sheet .chk { display: flex; gap: 8px; align-items: center; }
+.sheet-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; }
