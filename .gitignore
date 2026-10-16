@@ -1,0 +1,4 @@
+node_modules/
+dist/
+preload/preload.gen.js
+*.log
